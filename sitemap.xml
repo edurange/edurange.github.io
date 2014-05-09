@@ -17,10 +17,6 @@
         <lastmod>2014-05-06T15:04:47-07:00</lastmod>
     </url>
     <url>
-        <loc>http://edurange.github.io/project/</loc>
-        <lastmod>2014-05-08T21:17:20-07:00</lastmod>
-    </url>
-    <url>
         <loc>http://edurange.github.io/rss.xml</loc>
         <lastmod>2014-04-30T13:42:02-07:00</lastmod>
     </url>
@@ -35,6 +31,10 @@
     <url>
         <loc>http://edurange.github.io/blog/</loc>
         <lastmod>2014-05-07T21:13:01-07:00</lastmod>
+    </url>
+    <url>
+        <loc>http://edurange.github.io/download/</loc>
+        <lastmod>2014-05-09T11:25:11-07:00</lastmod>
     </url>
     <url>
         <loc>http://edurange.github.io/contact/</loc>

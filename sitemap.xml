@@ -5,7 +5,7 @@
         <lastmod>2014-05-06T15:04:47-07:00</lastmod>
     </url>
     <url>
-        <loc>http://edurange.github.io/instructors/</loc>
+        <loc>http://edurange.github.io/setup/</loc>
         <lastmod>2014-05-08T21:18:10-07:00</lastmod>
     </url>
     <url>
@@ -39,5 +39,9 @@
     <url>
         <loc>http://edurange.github.io/contact/</loc>
         <lastmod>2014-05-06T15:04:47-07:00</lastmod>
+    </url>
+    <url>
+        <loc>http://edurange.github.io/development/</loc>
+        <lastmod>2014-05-08T21:31:10-07:00</lastmod>
     </url>
 </urlset>

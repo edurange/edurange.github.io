@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Development - EDURange</title>
+  <meta name="author" content="EDURange">
+
+  
+  <meta name="description" content="">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://edurange.github.io/development">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <script src="/javascripts/libs/jquery.js"></script>
+  <script src="/javascripts/libs/modernizr-2.0.js"></script>
+  <script src="/javascripts/libs/bootstrap.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/rss.xml" rel="alternate" title="EDURange" type="application/atom+xml">
+  
+  
+
+</head>
+
+<body   >
+  <nav role="navigation"><nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">EDURange</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+  <li><a href="/blog">Blog</a></li>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a href="/project">Download</a></li>
+      <li><a href="/setup">Instructor Setup</a></li>
+      <li class="divider"></li>
+      <li><a href="/development">Development</a></li>
+    </ul>
+  </li>
+  <li><a href="/contact">Contact</a></li>
+
+</ul>
+
+
+      
+        <form class="navbar-form navbar-right" action="https://www.google.com/search" method="get" role="search">
+          <div class="form-group">
+            <input type="hidden" name="q" value="site:edurange.github.io" />
+            <input type="text" class="form-control search-query" name="q" results="0" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</nav>
+  <div class="container">
+    <div class="row-fluid">
+      
+<article role="article" class="span9">
+
+  
+  <header class="page-header">
+    <h1 class="entry-title">Development</h1>
+    
+  </header>
+  
+  <h2>Installation for creating an instructor machine</h2>
+
+<p>We will soon publish an AMI you can launch in AWS that has all of this installed and ready to go. If you are on the EDURange Amazon account (or a developer for EDURange without access) please contact Stefan at stefan.boesen [at] gmail.com or weissr [at] evergreen.edu.</p>
+
+<p>Run these on a fresh instance (we used a micro 64 bit Amazon Linux instance, AMI ID ami-fb8e9292)</p>
+
+<ol>
+<li><code>sudo yum update</code></li>
+<li><code>sudo yum install git ruby-devel make gcc gcc-g++ sqlite-devel</code></li>
+<li><code>git clone https://github.com/edurange/edurange.git</code></li>
+<li><code>git clone https://github.com/edurange/edurange_scoring.git</code></li>
+<li><code>cd edurange</code></li>
+<li><code>bundle</code></li>
+<li><code>./install.sh</code></li>
+<li><code>vim config/private_pub.yml, set your public IP as the development server. Change the secret, too!</code></li>
+<li><code>vim config/settings.yml, set your ec2_key.</code></li>
+<li><code>/path/to/bin/make_config_yml yourkeyname</code></li>
+<li><code>./start.sh</code></li>
+</ol>
+
+
+<p>Open a web browser to ip:3000. Make sure to allow TCP 3000 and 9292 to the internet. 3000 is the web interface, 9292 is the faye port.</p>
+
+<p>If your IP changes, edit private_pub.yml again and run ./stop.sh, ./start.sh.</p>
+
+<h2>Scenario Creation</h2>
+
+<p>Creating a scenario in EDURange is quite straightforward, although it will be easier as the API gets further developed. Currently all you need to do is edit the YML file, which defines some combination of the objects below. This document will serve as a reference for all of the parameters any object can take currently.</p>
+
+<p>Currently, the YML format is quite simple. All objects are kept within a root key named the pluralization of the object. &ldquo;Instance&rdquo; objects are kept within &ldquo;Instances:&rdquo;, etc. Example code for each object is provided. Please note any &ldquo;name&rdquo; parameters MUST BE UNIQUE.</p>
+
+<h3>Roles</h3>
+
+<p>Roles are container objects for both software packages and chef recipes, either built into EDURange or part of the community, and are referenced by name within an Instance object in order to apply the role.</p>
+
+<p>Definining the &ldquo;attacker&rdquo; role
+Roles:
+  &ndash; Name: attacker</p>
+
+<pre><code>Packages:
+  - nmap
+  - wireshark
+  - tshark
+Recipes:
+  - sshd_password_login
+  - wheelie
+</code></pre>
+
+<p>Referencing it within an instance
+  &ndash; Name: Player_1_Instance</p>
+
+<pre><code>Subnet: Player_Subnet 
+OS: ubuntu
+IP_Address: 10.0.123.2
+Roles:
+  - web_server
+</code></pre>
+
+<p>Groups
+Groups are container objects which each have a name, like &ldquo;Team_1&rdquo;, a list of users (login/password pair), a list of Instance objects the group has user access to, as well as a list of Instance objects the group has administrator access to.</p>
+
+<p>Groups:
+  &ndash; Name: Team_1</p>
+
+<pre><code>Access:
+  Administrator:
+    - Team_1_Instance
+  User:
+    - NAT_Instance
+Users:
+  - Login: edurange_1
+    Password: abcd
+  - Login: edurange_2
+    Password: abcd
+</code></pre>
+
+<h3>Scenarios</h3>
+
+<p>Currently, scenarios only have two parameters &ndash; a Game_Type, which is currently discarded yet mandatory, and a name, which sets the scenario display name (and is referenced by clouds).</p>
+
+<p>Scenarios:
+  &ndash; Game_Type: ctf</p>
+
+<pre><code>Name: Recon
+</code></pre>
+
+<p>Clouds
+Clouds have a name as well, but only for subnets to reference. The reference a scenario they belong to, and have a CIDR_Block, which must contain all subnets and at least for AWS may not be larger than a /16.</p>
+
+<p>Clouds:
+  &ndash; Name: Cloud_1</p>
+
+<pre><code>CIDR_Block: 10.0.0.0/16
+Scenario: Recon
+</code></pre>
+
+<h3>Subnets</h3>
+
+<p>Subnets have a name describing the subnet, reference a cloud, and have a CIDR_Block which must be within the cloud. The subnet cannot be smaller than a /28 in AWS. Currently there cannot be more than one internet accessible subnet, if a subnet is internet accessible the routing of internet-bound traffic travels through ths subnet&rsquo;s NAT instance.</p>
+
+<p>Subnets:
+  &ndash; Name: Player_Subnet</p>
+
+<pre><code>Cloud: Cloud_1
+CIDR_Block: 10.0.128.0/24
+Internet_Accessible: false # only necessary if true
+</code></pre>
+
+<p>Instances
+Instances have a name, subnet, and reference roles. Additionally, they have a boolean value Internet_Acessible, which determines if they are assigned a public IP address, and if they are the NAT instance of the corresponding internet accessible subnet. Currently the OS must be set to NAT, but if they are not internet accessible the OS can also be set to ubuntu. No other OSs are supported at this time, but if you need a specific OS we can add support trivially. Finally, instances are given a private IP address which must be within the Subnet&rsquo;s CIDR_Block.</p>
+
+<p>Instances:
+  &ndash; Name: NAT_Instance</p>
+
+<pre><code>Subnet: NAT_Subnet
+OS: nat
+IP_Address: 10.0.129.5
+Internet_Accessible: true
+Roles:
+  - NAT
+</code></pre>
+
+<h2>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+
+
+  
+    <footer>
+      
+      
+      
+    </footer>
+  
+</article>
+
+<aside class="sidebar-nav span3">
+  
+    <section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/01/edurange-project-summary/">EDURange: Project Summary</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section class="well">
+  <ul id="gh_repos" class="nav">
+    <li class="nav-header">GitHub Repos</li>
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/edurange">@edurange</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        github.showRepos({
+            user: 'edurange',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/asides/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - EDURange -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

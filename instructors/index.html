@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>EDURange</title>
+  <title>Instructor Setup - EDURange</title>
   <meta name="author" content="EDURange">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://edurange.github.io">
+  <link rel="canonical" href="http://edurange.github.io/instructors">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -102,27 +102,60 @@
 <article role="article" class="span9">
 
   
-  <h2>EDURange is a platform of interactive computer security exercises.</h2>
+  <header class="page-header">
+    <h1 class="entry-title">Instructor Setup</h1>
+    
+  </header>
+  
+  <p>As an instructor, you will use an Instructor VM that will allow you to run scenarios and observe the scoring
+events that you can use for assessment. The edurange code that runs the two scenarios that we have is
+already installed on the Instructor VM and it launches new VM instances and configures them. Currently,
+we have created one instructor machine that you can use or you can make a copy and customize it for your
+class. You can start and stop different exercises from the Instructor machine. The AWS console gives you
+a way to start and stop the instructor machine and to kill any Amazon Instances (AMIs) that were created
+by the instructor machine. For each scenario, there a YAML file in the edurange directory that specifies the
+exercise. It includes the number of students and what their passwords are. These can be changed in the
+YAML file subject to the resource limitations of the account. In general, students will each have their own
+EC2 instances to log into and work on the exercises (first they connect through an external IP address to a
+Gateway). The next section will lead you through starting an instructor machine and how to use it to create
+the scenarios. There are two modes for using EDURange. You may be using your own account or you may
+be using the EDURange group account. The use of those two modes will described separately.</p>
 
-<br />
+<h3>Starting the instructor machine from the EDURange account</h3>
 
+<p>If you are going to use the EDURange account, you will need the URL for the EDURange account, a username and password, and you will need to be a member of the edurange group or the edufac group. In the future, we will provide a form on this website for you to request access, but for now send e-mail. Once you have an account, the URL to sign in will be <a href="https://edurange.signin.aws.amazon.com/console">https://edurange.signin.aws.amazon.com/console</a></p>
 
-<p>This NSF-funded project aims to create a collection of exercises to help supplement classroom lectures, labs, and other activities. We believe that learning can be enhanced by an interactive and competitive environment. By practicing cybersecurity skills in a dynamic and customizable setting, students are rewarded by spending effort on thoughtful analysis, debugging, and reverse-engineering.</p>
+<p>After you login to the console, you can navigate to EC2. Once you log in, you will navigate to EC2. At the upper right, there will be a dropdown tab for the different AWS centers. You want East (N Virginia) and you should see a heading called Resources. Under that, click on the link to Running Instances. You should see a list of instances. You want one of the instructor instances, e.g. locasto-instructor.</p>
 
-<p>Our ultimate goal in this endeavour is to provide a publicly accessible environment with a minimal barrier to entry. EDURange helps students sharpen their information security analysis skills, while teaching them to evaluate and understand their limits.</p>
-
-<hr />
-
-<h3>The research and development agenda focuses on investigating three core issues:</h3>
+<h4>Starting the instructor machine</h4>
 
 <ol>
-<li><p>The construction of a suite of cybersecurity scenarios.</p></li>
-<li><p>The deployment of this platform in a variety security testbeds and cloud environments (at no cost to students or instructors).</p></li>
-<li><p>An understanding of how such scenarios might be used as an evaluation and assessment tool for both students in the course of their studies as well as an independent benchmark for other cybersecurity training curricula.</p></li>
+<li>Scroll down to Locasto-Instructor machine. Look at its instance status. If it is ”running” then it will have an external IP address and you can login to it. You can login to this VM with the credentials ubuntu/edurange12. If it is stopped, then click on the box next to the instance and go to the Actions pull-down tab at the top, and you can start it. You can also right click on the word “stopped” and you should see an option to start it. The circle in the status will turn from red to yellow and finally, to green. This can take 5 minutes. It will first say initializing, but eventually the status check will be complete and you can login. On the lower part of the screen, you will see the public IP address, using ssh client (on Windows you can use PuTTY), Be sure to stop the machine when you are done with the exercise. Do not terminate it, since that will remove it completely.</li>
+<li>If you created your own Instructor machine, you must configure it. You can set the username and password, as well as a key pair, in the AWS console. AWS can generate a key pair for you.
+Note: If you are new to EDURange, you can just use the existing Instructor machine and start it.</li>
+<li>After logging in to the instructor machine,
+ cd edurange</li>
 </ol>
 
 
-<p>We believe the project has potential to significantly advance the integration of cybersecurity into the undergraduate computer science curriculum. By providing interactive, competitive exercises, it will enhance the quality of instructional material, increasing active learning for students. By making the program easy for the instructors to use, it will encourage them to integrate cybersecurity into the current core curriculum. These exercises provide rapid feedback to students and faculty, which will aid in assessment of student learning.</p>
+<h3>Usage</h3>
+
+<p>We now have two scenarios &ndash;
+&ndash; recon.yml, a host discovery game with a scoring site (github.com/sboesen/edurange_scoring)
+&ndash; elf.yml, an scenario with an instances with where &lsquo;ls&rsquo; has an elf infection. Scoring is being developed to support elf and other scenarios.</p>
+
+<p>Browse to <a href="http://ip:3000/scenarios/new,">http://ip:3000/scenarios/new,</a> and select from a template if you want to use one of them.</p>
+
+<h3>Contributing</h3>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+
 
   
     <footer>

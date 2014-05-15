@@ -4,7 +4,7 @@
   <title><![CDATA[EDURange]]></title>
   <link href="http://edurange.github.io/atom.xml" rel="self"/>
   <link href="http://edurange.github.io/"/>
-  <updated>2014-05-14T20:01:22-07:00</updated>
+  <updated>2014-05-16T15:45:58-07:00</updated>
   <id>http://edurange.github.io/</id>
   <author>
     <name><![CDATA[EDURange]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[EDURange: Project Summary]]></title>
-    <link href="http://edurange.github.io/blog/2014/05/01/edurange-project-summary/"/>
-    <updated>2014-05-01T00:00:00-07:00</updated>
-    <id>http://edurange.github.io/blog/2014/05/01/edurange-project-summary</id>
+    <link href="http://edurange.github.io/blog/2013/08/01/edurange-project-summary/"/>
+    <updated>2013-08-01T00:00:00-07:00</updated>
+    <id>http://edurange.github.io/blog/2013/08/01/edurange-project-summary</id>
     <content type="html"><![CDATA[<h2>EDURange is a suite of interactive, educational computer security exercises.</h2>
 
 <br />

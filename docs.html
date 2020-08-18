@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EDURange | Welcome</title>
+    <script type="text/javascript" src="js/vendor/jquery.js"></script>
+    <script type="text/javascript" src="js/vendor/foundation.min.js"></script>
+    <script>
+        $.get("header.html", function (data) {
+            $("#header-placeholder").replaceWith(data);
+        });
+        $.get("footer.html", function (data) {
+            $("#footer-placeholder").replaceWith(data);
+        });
+    </script>
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" href="stylesheets/foundation.css" />
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- HEADER SECTION -->
+        <div id="header-placeholder"></div>
+        <!-- END HEADER SECTION -->
+        <br>
+        <div class="main-content">
+            <div class="row columns text-center">
+                <h3>Manuals</h3>
+            </div>
+            <div class="row columns">
+                    <p>Our manuals contain the basics of using EDURange as well as more in-depth descriptions of the scenarios. We suggest handing 
+                        the student manual to your students, as the instructions for some scenarios can only be found there.</p>
+                    <a href="docs/EDURangeInstructorManual.pdf" target="_blank">Instructor Manual</a>
+                    <br>
+                    <a href="docs/EDURangeStudentManual.pdf" target="_blank">Student Manual</a>
+            </div>
+
+
+        </div>
+        <!-- FOOTER SECTION -->
+        <div id="footer-placeholder"></div>
+        <!-- END FOOTER SECTION -->
+    </div>
+
+
+    <script>
+        $(document).foundation();
+        var rect = obj.getBoundingClientRect();
+    </script>
+
+</body>
+
+</html>

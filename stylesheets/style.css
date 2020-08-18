@@ -1,0 +1,176 @@
+html,
+body {
+	margin:0;
+	padding:0;
+	height:100%;
+}
+.wrapper {
+	min-height:100%;
+	position:relative;
+}
+.main-content {
+	padding-bottom:150px; /* Height of the footer element */
+}
+
+/*
+   FOOTER SECTION
+   ========================================================================== */
+.footer {
+    background-color: #292c2f;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 1rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer div.copywrite {
+    color: #8f9296;
+    font-size: 0.875rem;
+    margin: 0;
+    margin-top: 3px;
+}
+
+.footer .links a {
+    list-style: none;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 3rem 0 2rem;
+    margin: 0;
+}
+
+.footer .links a::after {
+    content: "•";
+    padding: 0 0.4rem 0 0.8rem;
+}
+
+.footer .links a:last-child::after {
+    content: "";
+    padding: 0 0.4rem 0 0.8rem;
+}
+
+
+/*
+   TOPBAR NAVGATION
+   ========================================================================== */
+
+.top-bar {
+    background: none;
+    padding: 45px 0.9375rem 90px 0.9375rem;
+    transition: all 0.5s ease 0.1s;
+    -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+    position: fixed;
+    z-index: 999;
+    min-width: 100%;
+}
+
+.top-bar .top-bar-right ul {
+    background: none;
+}
+
+.top-bar .top-bar-right ul li a:not(.button), .top-bar .top-bar-right ul li.active a:not(.button) {
+    background: none;
+    line-height: 30px;
+    font-size: 18px;
+    font-family: 'Helvetica';
+    font-weight: bold;
+    padding: 5;
+    margin: 5px 0 0 0;
+    text-transform: uppercase;
+}
+
+.top-bar .top-bar-right ul li a:not(.button):hover {
+    background: none;
+    /*border-bottom: 2px solid #3bbfce;*/
+    color: #222;
+}
+
+.top-bar .top-bar-right ul li.active a:not(.button) {
+    /*border-bottom: 2px solid #3bbfce;*/
+    color: #222;
+}
+
+.top-bar .top-bar-right ul li.active a:not(.button):hover {
+    background: none;
+}
+
+.top-bar .top-bar-right ul li {
+    margin-left: 30px;
+}
+
+.top-bar .top-bar-right ul li a {
+    color: #888;
+}
+
+.top-bar .top-bar-right ul li:hover:not(.has-form) > a {
+    color: #111;
+}
+
+.top-bar-right .button {
+    color: #444 !important;
+}
+
+.top-bar-right .button:hover, .top-bar-right .button:focus {
+    color: #111 !important;
+    font-weight: bold;
+}
+
+.header-fill {
+    background: #fff;
+    height: 80px;
+}
+
+.header-fill .tablet-mobile-logo {
+    padding-top: 30px;
+}
+
+.splash {
+    background: url("/img/class.jpg")no-repeat center center;
+    background-size: cover;
+    position: relative;
+    margin: 0 0 1rem 0;
+    padding: 1rem;
+    padding-right: 2rem;
+    border: 1px solid rgba(10, 10, 10, 0.25);
+    border-radius: 0;
+}
+
+.splash.large {
+     height: 320px;
+}
+
+.splash_image {
+    max-width: 110rem;
+}
+
+.splash_image img {
+    background-color: rgba(105, 125, 160, 0.7);
+}
+
+
+
+.shaded {
+    background-color: rgba(210,210,210,0.35);
+}
+
+.construction {
+  position: relative;
+  margin: 0 0 0 0;
+  padding: 0.5rem;
+  border: 1px solid rgba(10, 10, 10, 0.25);
+  border-radius: 0;
+  background-color: #ff4040;
+  color: #0a0a0a;
+  text-align: center; }
+
+
+  /* Old colors
+  .button background-color #2ba6cb
+  
+   */
+
+.scenario_img {
+    margin-top: 0.5rem;
+}

@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Instructor Setup - EDURange</title>
+  <meta name="author" content="EDURange">
+
+  
+  <meta name="description" content="">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://edurange.github.io/setup">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <script src="/javascripts/libs/jquery.js"></script>
+  <script src="/javascripts/libs/modernizr-2.0.js"></script>
+  <script src="/javascripts/libs/bootstrap.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/rss.xml" rel="alternate" title="EDURange" type="application/atom+xml">
+  
+  
+
+</head>
+
+<body   >
+  <nav role="navigation"><nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">EDURange</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+  <li><a href="/about">About</a></li>
+  <li><a href="/blog/archives">Blog</a></li>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Setup <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a href="/download">Download</a></li>
+      <li><a href="/setup">Instructor Setup</a></li>
+    </ul>
+  </li>
+  <li><a href="/development">Development</a></li>
+  <li><a href="/contact">Contact</a></li>
+
+</ul>
+
+
+      
+        <form class="navbar-form navbar-right" action="https://www.google.com/search" method="get" role="search">
+          <div class="form-group">
+            <input type="hidden" name="q" value="site:edurange.github.io" />
+            <input type="text" class="form-control search-query" name="q" results="0" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</nav>
+  <div class="container">
+    <div class="row-fluid">
+      
+<article role="article" class="span9">
+
+  
+  <header class="page-header">
+    <h1 class="entry-title">Instructor Setup</h1>
+    
+  </header>
+  
+  <p>As an instructor, you will use an Instructor VM that will allow you to run scenarios and observe the scoring
+events that you can use for assessment. The edurange code that runs the two scenarios that we have is
+already installed on the Instructor VM and it launches new VM instances and configures them. Currently,
+we have created one instructor machine that you can use or you can make a copy and customize it for your
+class. You can start and stop different exercises from the Instructor machine. The AWS console gives you
+a way to start and stop the instructor machine and to kill any Amazon Instances (AMIs) that were created
+by the instructor machine. For each scenario, there a YAML file in the edurange directory that specifies the
+exercise. It includes the number of students and what their passwords are. These can be changed in the
+YAML file subject to the resource limitations of the account. In general, students will each have their own
+EC2 instances to log into and work on the exercises (first they connect through an external IP address to a
+Gateway). The next section will lead you through starting an instructor machine and how to use it to create
+the scenarios. There are two modes for using EDURange. You may be using your own account or you may
+be using the EDURange group account. The use of those two modes will described separately.</p>
+
+<h3>Starting the instructor machine from the EDURange account</h3>
+
+<p>If you are going to use the EDURange account, you will need the URL for the EDURange account, a username and password, and you will need to be a member of the edurange group or the edufac group. In the future, we will provide a form on this website for you to request access, but for now send e-mail. Once you have an account, the URL to sign in will be <a href="https://edurange.signin.aws.amazon.com/console">https://edurange.signin.aws.amazon.com/console</a></p>
+
+<p>After you login to the console, you can navigate to EC2. Once you log in, you will navigate to EC2. At the upper right, there will be a dropdown tab for the different AWS centers. You want East (N Virginia) and you should see a heading called Resources. Under that, click on the link to Running Instances. You should see a list of instances. You want one of the instructor instances, e.g. locasto-instructor.</p>
+
+<h4>Starting the instructor machine</h4>
+
+<ol>
+<li>Scroll down to Locasto-Instructor machine. Look at its instance status. If it is ”running” then it will have an external IP address and you can login to it. You can login to this VM with the credentials ubuntu/edurange12. If it is stopped, then click on the box next to the instance and go to the Actions pull-down tab at the top, and you can start it. You can also right click on the word “stopped” and you should see an option to start it. The circle in the status will turn from red to yellow and finally, to green. This can take 5 minutes. It will first say initializing, but eventually the status check will be complete and you can login. On the lower part of the screen, you will see the public IP address, using ssh client (on Windows you can use PuTTY), Be sure to stop the machine when you are done with the exercise. Do not terminate it, since that will remove it completely.</li>
+<li>If you created your own Instructor machine, you must configure it. You can set the username and password, as well as a key pair, in the AWS console. AWS can generate a key pair for you.
+Note: If you are new to EDURange, you can just use the existing Instructor machine and start it.</li>
+<li>After logging in to the instructor machine,
+ cd edurange</li>
+</ol>
+
+
+<h3>Usage</h3>
+
+<p>We now have two scenarios &ndash;
+&ndash; recon.yml, a host discovery game with a scoring site (github.com/sboesen/edurange_scoring)
+&ndash; elf.yml, an scenario with an instances with where &lsquo;ls&rsquo; has an elf infection. Scoring is being developed to support elf and other scenarios.</p>
+
+<p>Browse to <a href="http://ip:3000/scenarios/new,">http://ip:3000/scenarios/new,</a> and select from a template if you want to use one of them.</p>
+
+  
+    <footer>
+      
+      
+      
+    </footer>
+  
+</article>
+
+<aside class="sidebar-nav span3">
+  
+    <section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/01/edurange-project-summary/">EDURange: Project Summary</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section class="well">
+  <ul id="gh_repos" class="nav">
+    <li class="nav-header">GitHub Repos</li>
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/edurange">@edurange</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        github.showRepos({
+            user: 'edurange',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/asides/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - EDURange -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

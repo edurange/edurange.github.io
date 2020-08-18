@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EDURange | Welcome</title>
+    <script type="text/javascript" src="js/vendor/jquery.js"></script>
+    <script type="text/javascript" src="js/vendor/foundation.min.js"></script>
+    <script>
+        $.get("header.html", function (data) {
+            $("#header-placeholder").replaceWith(data);
+        });
+        $.get("footer.html", function (data) {
+            $("#footer-placeholder").replaceWith(data);
+        });
+    </script>
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" href="stylesheets/foundation.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- HEADER SECTION -->
+        <div id="header-placeholder"></div>
+        <!-- END HEADER SECTION -->
+        <br>
+        <!-- MAIN BODY SECTION -->
+        <div class="main-content">
+            <div class="row columns text-center">
+                <h3>Publications</h3>
+            </div>
+            <div class="row columns">
+              <ul>
+                <li><a href="docs/EDURange_CSET14.pdf" target="_blank">EDURange: A Cloud Based Framework for Teaching Cybersecurity Analysis Skills</a></li>
+                <li><a href="docs/EDURange_AAAS.pdf" target="_blank">A Flexible Framework for Cyber Security Education</a></li>
+                <li><a href="docs/EDURange_SIGCSE15.pdf" target="_blank">Teaching Cybersecurity Analysis Skills in the Cloud</a></li>
+                <li><a href="docs/EDURange_ASE16.pdf" target="_blank">Finding the Balance Between Guidance and Independence in Cybersecurity Exercises</a></li>
+              </ul>
+            </div>
+        </div>
+        <!-- END MAIN BODY SECTION -->
+
+        <!-- FOOTER SECTION -->
+        <div id="footer-placeholder"></div>
+        <!-- END FOOTER SECTION -->
+    </div>
+
+
+    <script>
+        $(document).foundation();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EDURange | Scenarios</title>
+  <script type="text/javascript" src="js/vendor/jquery.js"></script>
+  <script type="text/javascript" src="js/vendor/foundation.min.js"></script>
+  <script>
+    $.get("header.html", function (data) {
+      $("#header-placeholder").replaceWith(data);
+    });
+    $.get("footer.html", function (data) {
+      $("#footer-placeholder").replaceWith(data);
+    });
+  </script>
+  <link rel="stylesheet" href="stylesheets/style.css" />
+  <link rel="stylesheet" href="stylesheets/foundation.css" />
+
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- HEADER SECTION -->
+    <div id="header-placeholder"></div>
+    <!-- END HEADER SECTION -->
+    <br>
+    <div class="main-content">
+      <div class="row columns text-center">
+        <h3>Scenarios</h3>
+      </div>
+      <div class="row columns">
+        <p>Our cybersecurity exercises cover the topics of Network Analysis and Reconnaissance, Malware Detection and Analyzation, 
+            Network Traffic Analysis and Defense, Social Engineering, and Web Security. Though our exercises can be done in any order, 
+            some can be good building blocks that work towards the more advanced ones. Most of the exercises require a minimal level 
+            of understanding of some standard Linux tools. We have provided some basic tutorials for Linux use in our manuals.</p>
+            <p>For more in-depth information on our scenarios, see the manuals.</p>
+      </div>
+      <br>
+      <div class="callout large primary">
+        <!--<p>Testimonial here!</p>-->
+      </div>
+      <div class="row">
+        <div class="medium-4 column">
+          <img class="scenario_img" src="img/ssh_inception.png">
+        </div>
+        <div class="medium-8 column">
+          <h3>Ssh Inception</h3>
+          <p>Ssh Inception teaches the basics of ssh, a secure program for logging into a remote machine, as well as helps familiarize
+            students with the basics of the linux system. This scenario introduces some helpful tools, includin grep, ifconfig,
+            nmap and ftp, to help uncover clues as you navigate through a series of network checkpoints. This is a great place
+            to start for learning the foundations of networking!</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="medium-8 column">
+          <h3>Total Recon</h3>
+          <p>Total Recon is a progressive, story-based game designed to teach how network protocols such as TCP, UDP, and ICMP can
+            be used to reveal information about a network. This scenario focuses on reconnaissance to determine hosts in an unknown
+            network. You will explore tradeoffs between speed and stealth when using tools such as nmap.</p>
+        </div>
+        <div class="medium-4 column">
+          <img class="scenario_img" src="img/total_recon.png">
+        </div>
+      </div>
+      <br>
+      <div class="callout large secondary">
+        <!--<p>Testimonial here!</p>-->
+      </div>
+
+      <div class="row">
+        <div class="medium-4 column">
+          <img class="scenario_img" src="img/strace.png">
+        </div>
+        <div class="medium-8 column">
+          <h3>Strace</h3>
+          <p>One of the important skills of cyber security is being able to analyze malware. In this scenario we focus on the dynamic
+            analyses of programs, using the dignostic tool strace. You are presented with the challenge of understanding what
+            a process is doing based on its system calls. Through both whitebox and blackbox testing, you will learn to filter
+            large amounts of data to distinguish between normal and anomalous behavior.</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="medium-8 column">
+          <h3>ELF Infection</h3>
+          <p>ELF Infection is an exercise to assess your understanding of the structure of an executable file. The goal is to teach
+            you, having identified that a program is doing something malicious, where that code has been injected and how it
+            works. This is a reverse engineering problem and can use a range of tools, including readelf, objdump, gdb, strace
+            and netstat.</p>
+        </div>
+        <div class="medium-4 column">
+          <img class="scenario_img" src="img/elf_infection.png">
+        </div>
+      </div>
+      <br>
+      <div class="callout large tertiary">
+        <!--<p>Testimonial here!</p>-->
+      </div>
+
+
+      <div class="row">
+        <div class="medium-4 column">
+          <img class="scenario_img" src="img/treasure_hunt.png">
+        </div>
+        <div class="medium-8 column">
+          <h3>Treasure Hunt</h3>
+          <p>Treasure Hunt is an exercise that teaches about permissions and other security loopholes in Linux. The goal of this scenario is 
+            to uncover the "secret" of 16 imaginary users. This scenario covers a broad array of topics, including password cracking and the 
+            .htaccess file, though it mainly focuses on the many aspects of the Linux file access permissions. This is classroom favorite and 
+            great way for students test both their knowledge and determination!</p>
+        </div>    
+      </div>
+      <hr>
+      <div class="row">
+        <div class="medium-8 column">
+          <h3>Scapy Hunt</h3>
+          <p>Scapy Hunt poses the challenge of analyzing network traffic to understand who is communicating with whom and how. The player is 
+            trying to get data from an ftp server which is not on the same subnet, but one of the hosts on its network is communicating with it. 
+            By default the player can only see packets sent to the server and must craft packets to get them routed to the target and get a response back.</p>
+        </div>
+        <div class="medium-4 column">
+          <img class="scenario_img" src="img/scapy_hunt.png">
+        </div>
+      </div>
+      <br>
+
+
+    </div>
+    <!-- FOOTER SECTION -->
+    <div id="footer-placeholder"></div>
+    <!-- END FOOTER SECTION -->
+
+
+  </div>
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EDURange | Welcome</title>
+  <script type="text/javascript" src="js/vendor/jquery.js"></script>
+  <script type="text/javascript" src="js/vendor/foundation.min.js"></script>
+  <script>
+    $.get("header.html", function (data) {
+      $("#header-placeholder").replaceWith(data);
+    });
+    $.get("footer.html", function (data) {
+      $("#footer-placeholder").replaceWith(data);
+    });
+  </script>
+  <link rel="stylesheet" href="stylesheets/style.css" />
+  <link rel="stylesheet" href="stylesheets/foundation.css" />
+
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- HEADER SECTION -->
+    <div id="header-placeholder"></div>
+    <!-- END HEADER SECTION -->
+
+    <br>
+    <div class="main-content">
+      <div class="row columns text-center">
+        <h3>About EDURange</h3>
+      </div>
+      <div class="row columns">
+        <p>EDURange is an NSF-funded project that is both a collection of interactive, collaborative cybersecurity exercises
+          and a framework for creating these exercises. It is designed to provide students with an active learning environment
+          focusing on analysis skills rather than on training based on a pre-packaged set of tools. Preparing cybersecurity
+          exercises is a major obstacle in many academic programs but out environment is simple enough that faculty with
+          limited knowledge of cybersecurity can employ it in the classroom. We hope that EDURange will significantly advance
+          the integration of cybersecurity into the undergraduate computer science curriculum. Our design, lab scenarios
+          and scoring system, reward the effort that students spend on analysis and reverse-engineering and helps them buy
+          into the process of sharpening their analysis skills while making them a partner in evaluation and understanding
+          of the limits of those skills.</p>
+      </div>
+      <br>
+      <div class="shaded" id="contact">
+        <br>
+        <div class="row columns text-center">
+          <h3>Contact Us</h3>
+        </div>
+
+        <!-- Temporary contact section -->
+        <div class="row columns">
+          <br>
+          <p>Have any questions or comments for us? Email our project supervisor, <a href="mailto:weissr@evergreen.edu">Richard Weiss</a>.</p>
+          <br>
+        </div>
+        <!-- Form to be used once php setup is complete -->
+        <div class="row is-hidden">
+          <div class="small-12 medium-8 small-centered columns">
+            <form data-abide novalidate>
+              <div data-abide-error class="alert callout" style="display: none;">
+                <p><i class="fi-alert"></i>There are some errors in your form.</p>
+              </div>
+              <div class="row">
+                <div class="small-3 columns">
+                  <label for="first-name" class="middle">First Name*</label>
+                </div>
+                <div class="small-9 columns">
+                  <input type="text" id="first-name" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="small-3 columns">
+                  <label for="last-name" class="middle">Last Name*</label>
+                </div>
+                <div class="small-9 columns">
+                  <input type="text" id="last-name" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="small-3 columns">
+                  <label for="email" class="middle">Email Address*</label>
+                </div>
+                <div class="small-9 columns">
+                  <input type="text" id="email" required pattern="email">
+                  <span class="form-error">
+                                        Please enter a valid email address.
+                                    </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="small-3 columns">
+                  <label for="school" class="middle">School / Organization*</label>
+                </div>
+                <div class="small-9 columns">
+                  <input type="text" id="school" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="small-3 columns">
+                  <label for="phone" class="middle">Phone Number</label>
+                </div>
+                <div class="small-9 columns">
+                  <input type="text" id="phone" data-abide-ignore>
+                </div>
+              </div>
+              <div class="row">
+                <div class="small-3 columns">
+                  <label for="comment" class="middle">Comment*</label>
+                </div>
+                <div class="small-9 columns">
+                  <textarea rows="4" id="comment" required></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <fieldset class="small-2 float-center">
+                  <button class="button" type="submit" value="Submit">Submit</button>
+                </fieldset>
+              </div>
+              <br>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <!-- FOOTER SECTION -->
+    <div id="footer-placeholder"></div>
+    <!-- END FOOTER SECTION -->
+
+  </div>
+
+  <script>
+        $(document).foundation();
+  </script>
+
+</body>
+
+</html>

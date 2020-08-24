@@ -1,0 +1,735 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>EDURange Instructor Manual</title>
+
+    <link rel="stylesheet" href="manual_style.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>EDURange Instructor Manual</h1>
+
+
+        <h3> <b> <a href="#introduction"> Introduction </a> </b> </h3>
+        <p> <a href="#using_inst_man"> Using The Instructor's Manual </a> </p>
+        <h3> <b> <a href="#using_edurange"> Using EDURange </a> </b> </h3>
+        <p> <a href="#manage_stu"> Managing Students </a> </p>
+        <p> <a href="#stu_reg"> Registering Students </a> </p>
+        <p> <a href="#stu_gro"> Creating Student Groups </a> </p>
+        <p> <a href="#run_scen"> Running Scenarios </a> </p>
+        <p> <a href="#scoring"> Scoring </a> </p>
+        <h3> <b> <a href="#scenarios"> Scenarios </a> </b> </h3>
+        <p> <a href="#ssh_inc"> SSH Inception </a> </p>
+        <p> <a href="#strace"> Strace </a> </p>
+        <p> <a href="#tot_rec"> Total Recon </a> </p>
+        <p> <a href="#get_stt"> Getting Started </a> </p>
+        <p> <a href="#tre_hu"> Treasure Hunt </a> </p>
+        <p> <a href="#elf_inf"> Elf Infection </a> </p>
+
+      </header>
+      <section id="introduction" >
+
+        <h1> Introduction </h1>
+
+          <p> EDURange is an NSF-funded project that is both a collection of interactive, collaborative cybersecurity exercises and a framework for creating these exercises. This suite of exercises is intended to help supplement classroom lectures, labs, and other activities. </p>
+
+          <p> We believe EDURange has a potential to significantly advance the integration of cybersecurity into the undergraduate computer science curriculum. By providing interactive, competitive exercises, it will enhance the quality of instructional material, and increase active learning for students. The ease of use for instructors will encourage them to integrate cybersecurity into the current core curriculum. These exercises will also provide rapid feedback to students and faculty, which will aid in assessment of student learning. </p>
+
+          <p> A key question we ask ourselves in our design process is: What kind of analysis skill do we expect the students to acquire from running (and re-running) this scenario? </p>
+
+          <p> Our central and very intense focus is on creating exercises that support and nurture the development of analysis skills rather than memorized scripts, recipes, or standard command line and GUI settings for a particular tool. Though some exercises revolve around using a specific tool, the main learning goal is the development of the analytical skills and understanding of the complex system which that tool acts upon. </p>
+
+          <p> By keeping this focus, EDURange helps students buy into the process of sharpening their information security analysis skills and makes them a partner in evaluating and understanding the limits of those skills. </p>
+
+          <p> Our cybersecurity exercises cover the topics of Network Analysis and Reconnaissance, Malware Detection and Analyzation, Network Traffic Analysis and Defense, Social Engineering, and Web Security. Though our exercises can be done in any order, some can be good building blocks that work towards the more advanced ones. Most of the exercises require a minimal level of understanding of some standard Linux tools. We have provided some basic tutorials for Linux use at the end of this document. </p>
+
+        <h2 id="using_inst_man"> Using The Instructor's Manual </h2>
+
+          <p> The Scenarios section of this manual is identical to what is included in the Student’s Manual. Since this is a publicly available document, we have not included extra information for you here. Once you have an EDURange Insturctor’s account, a more in-depth manual can be found with specifics of the scenarios.There you can find solutions, hints, file locations, and other particulars to thescenarios that we want to keep hidden from your students. </p>
+
+      </section>
+      <section id="using_edurange">
+
+        <h1> Using EDURange </h1>
+
+          <p> As an instructor, once you have installed and logged into the EDURange application at localhost:5000, you will be able to create student groups, run scenarios, view student data, and monitor scoring events. The default admin account in the application can have it's username, email, and password customized in the .env file and is immediately recognized by the application as an instructor account. </p>
+
+          <p> We suggest making your own student account and testing the process below before using EDURange in the classroom. You can use a second window in your browser to login with a second account at the same time. </p>
+
+        <h2 id="manage_stu"> Managing Students </h2>
+
+          <h3 id="stu_reg"> Registering Students </h3>
+
+          <p> Students can log into the EDURange application with or without a registration code. If the student registers without a code, they will only be added to the 'ALL' group where you can manually add them to other groups as you please. If you provide the students with a registration code, the students will be added to the group that is specified by the registration code and to the ALL group. </p>
+
+          <p> A third option is to create a group using the bulk user generation feature. This allows you as the instructor to create a group with a specified number of automatically generated user accounts that can be handed out to your students. </p>
+
+          <p> A unique registration code is available for every group that you create. The registration code for any group can be found in the All Groups section of your admin dashboard. </p>
+
+          <p> It should be noted that students who join or are added to a group that already has a running scenario will not be able to see the scenario. To allow them to access the scenario, the scenario will have to be stopped and possibly re-created. </p>
+
+          <p> As you will be managing the students based on the name they sign up with, youmight want to designate a format for them to use. Only numbers, letters andunderscore can be used in their names. (E.g. Jane_Smith, smithj_cs101) </p>
+
+          <h3 id="stu_gro"> Creating Student Groups </h3>
+
+          <p> Student groups are used to add students to each scenario. For basic use, create groups that will not exceed more that 30 students in size. </p>
+
+          <p> On your Admin Dashboard, scroll down to the student group box and enter a group name. If you would like to generate accounts for you students instead of having them create their own accounts, click the checkbox and enter a size for the group. Finally click the 'create' button to submit the group to the database. If you used the bulk user generation checkbox you will be shown the usernames and passwords for the users in the group. These should be save as they cannot be easily found again. </p>
+
+          <p> If you have created a group and want to add students manually, scroll to the Manage Students section and use the table to add students to your desired group. This can be done by selecting a group you would like to add students to from the drop down menu, selecting the boxes in the Selection column for each student you would like to add to the group, and submit the addition by pressing the 'Add Students to Group' button. Students can also be removed from a group using this menu as well. </p>
+
+        <h2 id="run_scen"> Running Scenarios </h2>
+
+          <p> Select the 'Scenario' tab on the collapsable sidebar. Once your scenarios have been created they will be listed on this page. Click the 'New Scenario' button. Enter a name for the scenario, and select the group that will play this scenario from the drop down menu. Finally find the scenario you want to use from the table and click the associated 'Create' button. The scenario will now be listed on the visible table and will give you options to 'Start', 'Stop', or 'Destroy' the scenario. </p>
+
+          <p> The listed name of each scenario on your table will act as a button, that can be used to see more detailed information about the scenario itself. The responses to student questions can also be found here under the 'Responses' tab. </p>
+
+          <p> It should be noted that a scenario can only be destroyed if it is stopped. </p>
+
+          <p> Students can join or be added to groups that already have scenarios created for them. However, these late students will currently not be able to see the already  created scenario. Please try to have all the students of a group, be members of the group before creating a scenario. </p>
+
+        <h2 id="scoring"> Scoring </h2>
+
+          <p> Most EDURange scenarios have questions for students to answer, that utilize our built-in scoring system. Once the scenario is running students can answer the questions from their accounts. Their answers can be found on the 'Responses' tab of the Scenario Information page, which can be accessed by clicking on the listed name for a scenario on the Scenarios page. </p>
+
+          <p> The built-in scoring system is used to monitor student’s progress on most scenarios. They are questions that are simple and objective such as - “What is the IP address of the Mars Aerospace Port?”, “How many possible hosts does the subnet 10.0.192.0/18 cover?”, or “What is the decrypted string of the file ‘final_flag’?” </p>
+
+          <p> Some of the scenarios are more complex and therefore don’t utilize this scoring system, though we have still provided many Assignment Questions and Discussion Questions which can be found in this and the Student’s Manual. </p>
+
+      </section>
+      <section id="scenarios">
+
+        <h1> Scenarios </h1>
+
+      </section>
+      <section id="ssh_inc">
+
+        <h2> SSH Inception </h2>
+
+          <h3 id="ssh_inc_desc"> Description </h3>
+
+            <p> SSH Inception teaches the basics of ssh, a secure program for logging into a remote machine.  You will use ssh along with some other tools to navigate through a series of network checkpoints. </p>
+
+          <h3 id="ssh_inc_back"> Background </h3>
+
+            <p> Logging into a remote machine is one of the most basic computer networkingtasks. Knowing the different methods and options for doing so is essential. Thisexercise will also introduce you to some other helpful tools as you navigatethrough the checkpoints, including grep, ifconfig, nmap and ftp. Though youwill only use them briefly here, they are each powerful tools on their own thatyou should investigate further. Reading the man pages of these tools is the firstplace to start if you are unsure how to tackle a problem. For nmap, be sure thatyou only use it to scan the local network, which starts with 10.0.0. </p>
+
+            <p> For grep, you can search through a large number of files with one command: </p>
+
+            <p> grep 1234 *.txt </p>
+
+          <h3 id="ssh_inc_learn_obj"> Learning Objectives </h3>
+
+            <ul>
+              <li> Understand what is happening when you ssh </li>
+              <li> Understand key pairs and why they provide more protection than passwords </li>
+              <li> Have a basic familiarity with a linux system </li>
+            </ul>
+
+          <h3 id="ssh_inc_instruct"> Instructions </h3>
+
+            <p> Connect to the VM via your instructor’s directions, or as displayed on yourEDURange account. Instructions will be displayed upon logging in and at eachnew checkpoint. </p>
+
+          <h3 id="ssh_inc_lab&questions"> Lab Assignments and Questions </h3>
+
+            <p> Questions can be found upon logging into your EDURange account. </p>
+
+          <h3 id="ssh_inc_disc_questions"> Discussion Questions </h3>
+
+            <ol>
+              <li> Why did you see the following message when you used ssh the first timeto connect to the NAT?
+                <p> The authenticity of host [IP address] can’t be established.ECDSA key fingerprint is SHA256:[hash value]. </p>
+              <li> What were some of the different ways each network limited or allowed auser to login? </li>
+              <li> How were you able to get access to the loose ftp server? Was there anotherway to gain access? What could be done to secure the ftp server? </li>
+              <li> How was the filebetcha_cant_read_medecoded? What are some othersimilar methods? </li>
+              <li> The final problem in this exercise is a bit challenging and will require somecreative thinking. Why was it difficult to stay in Satan’s Palace? There aremultiple ways to get what you are looking for. Share with classmates howyou achieved your goal. Do you understand why these different methodsworked? </li>
+            </ol>
+
+          <h3 id="ssh_inc_solut"> Solution </h3>
+
+            <p> This guide provides a brief description of the steps necessary to pass each levelof ssh inception. </p>
+
+          <h3 id="to_start"> Getting to Starting Line </h3>
+
+            <p> Students must ssh into the public instance. From there they will be instructedtossh 10.0.0.5 to get to Starting Line </p>
+
+          <h3 id="start_line"> Starting Line </h3>
+
+            <p> Students must use the-poption insshto advance to First Stop. For example </p>
+
+            <code> student@StartLine:~$ ssh -p 123 10.0.0.7 </code>
+
+          <h3 id="first_to_second"> First Stop to Second Stop </h3>
+
+            <p> Students must use nmap to find the right IP address for the next server. Theycan find their subnet by using ifconfig. </p>
+
+            <code>
+            student@FirstStop:~$ ifconfig
+            eth0      Link encap:Ethernet  HWaddr 02:7f:d0:af:99:52
+            inet addr:10.0.0.7  Bcast:10.0.0.31  Mask:255.255.255.224
+            inet6 addr: fe80::7f:d0ff:feaf:9952/64 Scope:Link
+            UP BROADCAST RUNNING MULTICAST  MTU:9001  Metric:1
+            RX packets:9016 errors:0 dropped:0 overruns:0 frame:0
+            TX packets:2426 errors:0 dropped:0 overruns:0 carrier:0
+            collisions:0 txqueuelen:1000
+            RX bytes:13022915 (13.0 MB)  TX bytes:184629 (184.6 KB) </code>
+
+      </section>
+      <section>
+
+        <h2 id="strace"> Strace </h2>
+
+          <p> Strace (dynamic analysis of binaries) poses the challenge of understanding whata process is doing based on its system calls. You will learn to filter large amountsof data to distinguish between normal and anomalous behavior. </p>
+
+          <h3 id="strace_back"> Background </h3>
+
+          <p> One of the important skills of cyber security is being able to analyze malware. These skills overlap with debugging, except that the problems can be more subtle. This exercise focuses on dynamic analysis of programs, i.e. analyzing what a program does while it is running. It turns out that in order to do anything, a program or process relies heavily on the operating system. The system call (syscalls) can reveal a lot about what the program is doing. One of the tools for examining the syscalls is strace. You should first figure out where the strace binary is located and what some of the options are (look at the man pages). </p>
+
+          <p> You will start with whitebox testing of some programs for which you have the source code. Then, you can move to blackbox testing using trace files. When reading through the traces, you will first need to figure out what the system calls are doing. The system calls also have man pages. The last strace in this example has two executables running. If you are working in a group, think about how you can divide up the work in an efficient way. </p>
+
+          <h3 id="strace_learn_obj"> Learning Objective </h3>
+
+          <ul>
+            <li> Know how to analyze the sequence of sys calls and recognize patterns </li>
+            <li> Be able to determine if a program is behaving as expected </li>
+            <li> Recognize when a process forks another process </li>
+            <li> Recognize when a process opens a file or socket </li>
+            <li> Recognize when a process deletes a file </li>
+            <li> Recognize which system calls introduce threats and how that happens </li>
+          </ul>
+
+          <h3 id="strace_intro"> Instructions </h3>
+
+          <p> Connect to the VM via your instructor’s directions, or as displayed on your EDURange account. Follow the Lab Assignments and Questions section below. </p>
+
+          <p> It may be helpful to look over the Grep and Piping and Redirecting portions of the Student Tutorials section. They can help you filter through the results of strace. </p>
+
+          <h3 id="strace_lab&questions"> Lab Assignments and Questions </h3>
+
+          <ol>
+            <li> Your home directory contains various files that will be used in this scenario. One is the file empty.c, whose contents are: <code> c   int main () {} </code> Compile this program as follows: <code> sh   gcc -o empty empty.c </code> Now run strace to execute the empty program: <code> sh   strace ./empty </code> What do you think the output of strace indicates in this case? How many different syscall functions do you see? </li>
+
+            <li> The file hello.c contains this simple program: <code> c  # include <stdio.h>;int main () {    printf("hello\\n");  } </code> Compile hello.c to hello and execute it with strace: <code> sh  gcc –o hello hello.c  strace./hello </code> Compare the output of strace for empty and for hello. Which part of the strace output is boiler plate, and which part has to do with the specific program? </li>
+
+            <li> The-o option of strace writes its output to a file. Do the following: <code> sh   strace -o empty-trace ./empty   strace -o hello-trace ./hello   diff empty-trace hello-trace </code> xplain  the  differences reported between traces empty-trace and hello-trace. (Colordiff is installed as well.) </li>
+
+            <li>
+              <p> Study the programcopy.c. “‘c # include <stdio.h> # include <stdlib.h> </p>
+              <p> int main (int argc, char** argv) { char c; FILE* inFile; FILE* outFile;char outFileName[256]; </p>
+              <code> if (argc != 3) { </code>
+              <code> printf("program usage: ./copy <infile> <outfile>\n"); </code>
+              <code> } </code>
+              <code> snprintf(outFileName, sizeof(outFileName), "%s/%s", getenv("HOME"), argv[2]); </code>
+              <code> inFile = fopen(argv[1], "r"); </code>
+              <code> outFile = fopen(outFileName, "w"); </code>
+              <code> printf("Copying %s to %s\n", argv[1], outFileName); </code>
+              <code> while ((c = fgetc(inFile)) != EOF) { </code>
+              <code> fprintf(outFile, "%c", c); </code>
+              <code> } </code>
+              <code> fclose(inFile); </code>
+              <code> fclose(outFile); </code>
+              <code> } </code> <p> Compile it to an executable named copy and use strace to execute it as follows:sh gcc -o copy copy.c strace ./copy tiger.txt mytiger.txt “‘ </p>
+              <p> Explain the non-boilerplate parts of the trace by associating them with specific lines in copy.c. Are there any lines from the program that you expect to show up in the trace that don’t? </p> </li>
+
+              <li> The file strace-identify was created by calling strace on a command. Thefirst line of the trace has been deleted to make it harder to identify.Determine the command on which strace was called to produce this trace. </li>
+
+              <li> Sometimes strace prints out an overwhelming amount of output. One way to filter through the output is to save the trace to a file and search through the file with grep. But strace is equipped with some options that can do some summarization and filtering. To see some of these, try the following, and explain the results: <code> sh  find /etc/dhcp  strace find /etc/dhcp  strace -c find /etc/dhcp  strace -e trace=file find /etc/dhcp  strace -e trace=open,close,read,write find /etc/dhcp </code> </li>
+
+              <li> Here is a simple shell script in script.sh: <code> sh  #!/bin/bash  echo "a" > foo.txt  echo "bc" >> foo.txt  echo`id -urn`>> foo.txt chmod 750 foo.txt  cat foo.txt | wc  chmod 644 foo.txt </code> Compare the outputs of the following calls to strace involving this script. Explain what you see in the traces in terms of the commands in the script.
+              <code> sh  strace ./script.sh  strace -f ./script.sh </code> </li>
+
+              <li> The file mystery is an executable whose source code is not available. Use strace to explain what the program does in the context of the following examples: <code> sh   ./mystery foo abc   ./mystery foo def   ./mystery baz ghi </code> </li>
+
+              <li> Create a one-linesecret.txtfile. Here’s an example, though of course youshould choose something different as your secret: <code> sh   echo "My phone number is 123-456-7890" > secret.txt </code> Now display the secret to your-self using cat: <code> cat secret.txt   My phone number is 123-456-7890 </code> Is your secret really secret? How much do you trust the cat program? Start by running strace on cat secret.txt to determine what it’s actually doing. Based on this and subsequent experiments, determine answers to the following questions:
+                <ul>
+                  <li> The cat program in the strace scenario does more than display the contents of a file? Exactly what else does it do? </li>
+                  <li> How can you display the contents of a file without the extra actions reported above? </li>
+                  <li> Can anyone else read your secret? </li>
+                  <li> Can you read the secrets of anyone else? </li>
+                  <li> How do you think the trojaned cat program was implemented? How do you think it was installed? Justify your explanations </li>
+                </ul> </li>
+          </ol>
+
+          <h3 id="strace_disc_questions"> Discussion Questions </h3>
+
+          <ol>
+            <li> What are the major types of syscalls? Which ones would you look for when black box testing? </li>
+            <li> Explain how you would disguise a rootkit that copies a file to a hidden directory. </li>
+            <li> Explain how you would disguise a rootkit that opens a reverse shell. </li>
+          </ol>
+
+      </section>
+      <section>
+
+        <h2 id="tot_rec"> Total Recon </h2>
+
+          <p> Total Recon is a progressive, story-based game designed to teach how network protocols such as TCP, UDP, and ICMP can be used to reveal information about a network. Total Recon focuses on reconnaissance to determine hosts in an unknown network. You will explore tradeoffs between speed and stealth when using tools such as nmap. </p>
+
+          <h3 id="tot_rec_back"> Background </h3>
+
+          <p> Whether you’re doing a large-scale security audit, inventorying a network, or analyzing network response times, nmap is a powerful tool to help you complete your task. In order to understand this exercise, you should be familiar with the 3-way handshake for TCP. A basic understanding of ICMP and UDP will also be helpful. This exercise is not designed to teach you all of the details of those protocols, but rather to show you how they can be used for network exploring. You will learn how to discover hosts on a network, determine which ports on those hosts are open, and what applications are running on them. </p>
+
+          <p> In practice, each message that is sent over the Internet uses multiple protocols, which are divided into five layers: physical layer, link layer, network layer, transport layer and application layer. For example, the physical layer handles what is encoded as a 0 or 1. The link layer handles communication on local area networks (LANs). The network layer handles routing on wide area networks (WANs), e.g. IP. The transport layer handles ports and processes, e.g. TCP, UDP, ICMP. The application layer handles applications communicating with each other, e.g. http, ftp, by nesting packets inside of packets. In general, these packets correspond to layers of functionality: TCP is connection-oriented and is responsible for a number of things including reliably conveying messages between the application layers on two hosts. The three-way handshake establishes this pairing with the following sequence: SYN, SYN-ACK, and ACK You can get a summary of the important protocols and their layers in: Chapter 4 of Hacking: The Art of Exploitation (Erickson)[1] or Chapter 2 of Counter Hack Reloaded [2]. Network Security by Kaufman, Perlman, Speciner [3] </p>
+
+          <h3 id="tot_rec_intro"> Instructions </h3>
+
+          <p> Connect to the VM via your instructor’s directions, or as displayed on your EDURange account. Instructions will be displayed upon logging in and at each new checkpoint. </p>
+
+          <h3 id="tot_rec_lab&questions"> Lab Assignments and Questions </h3>
+
+          <p> Questions can be found upon logging into your EDURange account. </p>
+
+          <h3 id="tot_rec_disc_questions"> Discussions Questions </h3>
+
+          <ol>
+            <li> What is the 3-way handshake? </li>
+            <li> What does 10.1.1.0/17 mean? how many IP addresses does that include? </li>
+            <li> What does the SYN flag do? What does the FIN flag do? </li>
+            <li> What are the options for nmap and what are their differences in terms of time, stealth and protocols? </li>
+            <li> Which methods did you use to speed up your scans? What else could you have done? </li>
+          </ol>
+
+      </section>
+      <section>
+
+        <h2 id="get_stt"> Getting Started </h2>
+
+          <p> Congratulations recruit and welcome to CyberSec. As you should know we provide security services to you, our communities, and small businesses. You’ve made it this far, I suppose that means you may be helpful. But first comes the training. We need to strengthen your skills before you can truly be of use. Go through each tab to the left and at the end we will test what you have learned. Remember, this world is being controlled by the malicious corporations and individuals and we must learn to protect ourselves from their invasive attacks. We must protect our data. This is why you are here. To protect yourself, your company and your community. And it all starts here, at the beginning, with a terminal command. </p>
+
+          <h3 id="get_stt_term"> Terminal </h3>
+
+          <p> When using your computer (Mac, Linux, Windows) you typically are using a GUI (Graphical User Interface). It’s a pretty representation of how your computer works. To really get into the ‘guts’ of your computer and to really learn how to control it we will learn how to use the terminal. The terminal is a text based representation of your computer (rather than graphical). Learning to use the terminal will help you along your path to protecting your community and yourself. </p>
+
+          <p> Why should you learn the command line? </p>
+
+          <ul>
+            <li> You gain greater control over the system (computer) </li>
+            <li> A GUI interface just doesn’t have the power needed to run repetitive tasks. </li>
+            <li> Doing anything from a simple task of renaming a file, changing a user information and searching for files is faster and easier through command line once it is learned. </li>
+            <li> Scalability </li>
+            <li> Scriptability </li>
+            <li> Simple design </li>
+            <li> Simple interface </li>
+            <li> Stable design </li>
+          </ul>
+
+          <p> In summation it allows you to do stuff faster than GUI and provides an amazing automation support built in. </p>
+
+          <p> Open up terminal for the rest of this training. Orsshinto the server for the command line experience. </p>
+
+          <h3 id="get_stt_lin_fsys"> Linux File System </h3>
+
+          <h4> Hierarchy </h4>
+
+          <p> Linux folders and files are arranged like an upside down tree, where the slash/ is called the root, or beginning, of all your files in the entire computer. The root is the base of the tree and as you go down it keeps splitting into branches and leaves. The leaves would be a file and the branches are folders. </p>
+
+          <h4> / vs. logging in as root </h4>
+
+          <p> The root, signified by a/, is the beginning of your files. But you can also log in as the root user. When you do this, your home directory (where your files are typically saved) is in the folder /root not at,/. The /root folder is not to be confused with the slash (root) the beginning of all the files. Just like if you were logged in as bermic you would typically save your files in /home/bermic, whereas the root user saves their files in /root. </p>
+
+          <p> <b> Important</b>, a root user is someone who has access to everything on the computer. They could even delete everything in a computer. It is best practices to disable root or use a VERY strong password.  For example using numbers, letters, capitals, special symbols and a random sampling of each, and no dictionary words. </p>
+
+          <h3 id="get_stt_comm"> Commands </h3>
+
+          <p> What is a command? A command is something you type into your terminal to make something happen. That’s a bit vague but essentially the idea. You can do a lot of things with commands. Let’s get started right away and use two different commands. Let’s go to your home directory. </p>
+
+          <h4> cd </h4>
+
+          <p> Type each of the following. One at a time. Hitting enter after each </p>
+          <code> ~$ cd / </code>
+          <code> ~$ cd /root </code>
+          <code> ~$ cd </code>
+          <code> ~$ cd ../ </code>
+          <p> The first command sends you to the root of your entire file system. </p>
+          <p> The second command sends you to the user root folder </p>
+          <p> The third command sends you to your home directory </p>
+          <p> The fourth sends you backwards (up) a level. </p>
+          <p> TASK: cd to /bin then cd back to your home directory. </p>
+
+          <h4> pwd </h4>
+
+          <p> Now type in </p>
+          <code> ~$ pwd </code>
+          <p> Hit enter, pwd is a command to print your working directory. In other words, it prints your location so you can see where you are. You should see something similar to /home/yourusername. To learn more type <code> man pwd </code>, then to get outof that page type <code> q </code> </p>
+
+          <h4> ls </h4>
+
+          <p> Type </p>
+          <code> ~$ ls </code>
+          <p> Hit enter,lslists the files and directories of where you are now. </p>
+          <p>There are parameters and options you can give a command. What if you wanted to list the permissions of a file and find hidden files? (Yes there are hidden files!) </p>
+          <p> Now type </p>
+          <code> ~$ ls -la </code>
+          <p> Then hit enter. </p>
+          <p> That’s a lot of info! What you see is all the files and folders in the folder you are at currently. </p>
+
+          <ul>
+            <li> The first column is the type of file followed by permissions. – means a regular file. d is a directory (folder). l is a link. rwx are the permission for each file. rwx stands for 7 so rwxrwxrwx would be 777. These correspond to binary. There are 3 bits. 000 would stand for 0. 111 is 7. 101 is 5, etc. Each file has visible 3 permissions User, Group, Anyone. </li>
+            <li> The next column is the number of links or directories in the folder </li>
+            <li> The 3rd column is the user that owns the folder/file </li>
+            <li> The 4th column is the group that owns the folder/file </li>
+            <li> The 5th is the size of the file/folder </li>
+            <li> The 6th is the month day and time it was last edited/touched </li>
+            <li> And finally the file name </li>
+          </ul>
+
+          <p> TASK: cd into your home directory and then type ls and you will see a directory called “follow_Me”. Travel as deep as that folder will go. When you get to the end there is a file whose name is a randomized number. Find that. </p>
+
+          <h4> sudo </h4>
+
+          <p> Sometimes commands can only be run as a super user. This is when the command sudo comes to use (which stands for: superuser do). This gives unprivileged users access to privileged commands. If you try to do something and it says Permission denied, try again with sudo in front of the command. </p>
+
+          <h3 id="get_stt_man"> Man Pages </h3>
+
+          <p> Man Pages is short for manual pages. These are text documents with lots of information on commands. Remember the command we did for listing our files? ls! Let’s find that man page. </p>
+          <p> Type </p>
+          <code> ~$ man ls </code>
+          <p> and hit enter </p>
+          <p> Remember we typed ls -la? Let’s learn what -l and -a is! </p>
+
+          <h4> -l </h4>
+
+          <p> To search inside a man page, you use a /. Now type /-l and hit enter. You will probably see the page move to the first occurrence found and on top of that you should see that -l was highlighted * . To move around your search keep hitting n (stands for next) until you see -l highlighted to the left. This will be above -L Long listing stands for listing the items in a row as seen in figure 2 </p>
+
+          <h4> -a </h4>
+
+          <p> Type /-a and hit enter. Hit n till you can’t go any further. Now hit b (stands for back) until you find the entry for -a which is above -A The man page istelling you that files that start with . like .bashrc (which are typically hidden) are now going to be displayed. </p>
+
+          <h4> q </h4>
+
+          <p> When in a man page and you need to get out, just type q </p>
+
+          <p> TASK: Open the man page for “file”. Can you give a brief description of what the command “file” does? </p>
+
+          <ul>
+            <li> If you don’t see it highlighted, you may have typed something by mistake or your console colors may not be optimized. If you typed something by mistake, just retype /-l etc. </li>
+          </ul>
+
+          <h3 id="get_stt_ftyp"> File Types </h3>
+
+          <p> Not all files appear as they really are. Just because you see a file that says, imanimage.png does not mean that it is an image. It could be a text file or a harmful file if executed! So. . . how do you protect yourself? One way is with the file command! </p>
+
+          <h4> file </h4>
+
+          <p> To find out what a file really is regardless of its extension isfile. Check out the man page. Give it a peruse by typing inman file. What type of options are there with file? Now let’s test it. Type q to get out of the man page. </p>
+
+          <p> There are 2 files in your Linux box in a folder at your home directory called /toLearn . One is called cat.jpg and the other is dog.jpg </p>
+
+          <p> Both look like images to me! But if you type in ls -l you will notice that one is a lot larger in size than the other. One is about 25,000 bytes whereas the other is only about 20. Now let’s see what is really going on. </p>
+
+          <p> Type </p>
+          <code> ~$ file dog.jpg </code>
+          <p> You’ll see something like, dog.jpg: ASCII text </p>
+          <p> Now Type </p>
+          <code> ~$ file cat.jpg </code>
+          <p> You’ll see something like, cat.jpg: JPEG image data, Exif standard: TIFF image data, . . . etc. </p>
+
+          <h4> cat </h4>
+
+          <p> Now let’s learn a new command, cat. cat prints out the text from a file. </p>
+          <p> Type </p>
+          <code> ~$ cat dog.jpg </code>
+          <p> You should see something like: </p>
+          <code> meow I am a doggo </code>
+          <p> TASK: In your home directory there is a folder called stuff. Open that up and find out what file types are in there. One is a text file (ASCII). cat that and find the secret code inside. </p>
+
+          <h3> Case Sensitivity / touch / echo / Angle Brackets </h3>
+
+          <h4> Case Sensitivity </h4>
+
+          <p> Case sensitivity means that HoW yoU labEL yoUR files matters. If you search for a file called hiya.docx, it would not be the same as finding a file, hiyA.docX. </p>
+
+          <h4> touch </h4>
+
+          <p> touch is a command that ‘touches’ a file. If the file exists it updates its modified date. If the file does not exist, then the file will be created with nothing in it. man touch to learn more. </p>
+
+          <h4> echo </h4>
+
+          <p> echowill copy what you write to stdout (standard out, explained more later). You can use this in many different ways. </p>
+          <p> Type </p>
+          <code> ~$ echo "This is echoed" </code>
+          <p> You will see that it was repeated back to you! </p>
+
+          <h4> Angle Brackets </h4>
+
+          <p> Angle Brackets are > >> < << . They have many uses. > Will replace a file with what you input. If the file already existed > will delete everythingin that file and replace it with what you sent it. In contrast if you use >> , this will append what you sent to the bottom of the file, leaving the rest of the file intact. Let’s give it a try. </p>
+          <p> Type </p>
+          <code> ~$ echo "This is cool" > newfile </code>
+          <code> ~$ cat newfile </code>
+          <p> Now Type </p>
+          <code> ~$ echo "This is cool too" > newfile </code>
+          <code> ~$ cat newfile </code>
+
+          <p> You can see that > will replace any text with what you send it. While >> will append to a file </p>
+          <p> Type </p>
+          <code> ~$ echo "This is another thing" >> secondfile </code>
+          <code> ~$ echo "Hello World" >> secondfile </code>
+          <code> ~$ cat secondfile </code>
+
+          <p> Now let’s combine the two files. </p>
+          <p> Type </p>
+          <code> ~$ cat newfile >> secondfile </code>
+          <code> ~$ cat secondfile </code>
+
+          <p> You can see the newfile appended to the end of secondfile whereas if you cat newfile it will still only have what we added to it earlier. </p>
+
+          <p> TASK: There is a folder in your home directory called textfiles.  There are three files, append them all to a new file called, alltogether.txt in your personal directory. (Your home directory) </p>
+
+          <p> The tip below is NOT required but only if you want a harder task! </p>
+
+          <p> There are many ways to accomplish this in one line, here is a hint for one way, type </p>
+
+          <p> echo “one”; echo “two”; echo “three”; </p>
+
+          <h3> vim, Regular expressions and find </h3>
+
+          <h4> vim </h4>
+
+          <p> vim is a program that is used to edit files, and will hopefully be your new best friend! There are different editors out there for example, nano and emacs. To create a file just type </p>
+
+          <code> ~$ vim mynewfile.txt </code>
+
+          <p> Or </p>
+
+          <code> ~$ vim thisisfun </code>
+
+          <p> To edit a file that is already created it’s the same procedure, just make sure not to misspell it or you’ll create a new file with that spelling. </p>
+
+          <p> Once you are in vim the main key strokes to editing a file are: </p>
+          <p> i - This puts you in edit mode to type and delete text like you normally would </p>
+          <p> esc - Hitting the escape key will take you out of edit mode </p>
+          <p> :w - These keystrokes will save the file. w stands for write. </p>
+          <p> :q! - To quit without saving. Did you edit a file and don’t want to commit that change? These keystrokes will exit vim and NOT save your file. </p>
+          <p> :q - These keystrokes will quit the vim program. You can also do:wqto save the file and quit right away. :q will not work unless you have saved your file or you have made no changes what-so-ever. </p>
+          <p> dd - When you are NOT in edit mode this will delete an entire line. (Make sure your cursor is on the line you want to delete) </p>
+          <p> 0 - zero will take you to the beginning of a line </p>
+          <p> $ - will take you to the end of a line </p>
+
+          <p> There is a LOT that vim can do but we won’t list it all here. Do a search on the internet to learn more! You can also check out a vim command cheat sheet, <a href="https://vim.rtorr.com">here</a> and <a href="https://devhints.io/vim">here</a>. But at the end of this lesson will be a couple more commands that you will find to be amazingly helpful! You can also check out vimtutor: </p>
+          <code> ~$ vimtutor </code>
+
+          <p> TASK: In your home directory in a folder called editme there is a file called editme.txt, open that up in vim. Delete lines 4 and 5 and add 2 more lines of anything you would like at the end of the file. Don’t forget to save. </p>
+
+          <h4> Wild Card and Regular expressions </h4>
+
+          <p> Regular expressions are used to help you find something on your computer and can be used in programming to enhance your programs. There are a LOT of websites out there that teach you all about it but the gist is that you can use symbols like a * to mean something when parsing through text. For example the * is a wild card. Let’s say I wanted to find a file with the word spekter in it. But there could be other text before and after the word spekter. So I could say search for, <em>spekter</em>. This means, search for spekter and I don’t care if there is anything else before or after. </p>
+
+          <p> To learn about how powerful regular expressions are check out these sites: </p>
+
+          <a href="https://regexone.com/">https://regexone.com/</a>
+          <a href="https://regexr.com/">https://regexr.com/</a>
+
+          <h4> find </h4>
+
+          <p> This leads us to find. find is a very helpful tool that you can use to find things on your computer. Take a moment to peruse the man page for find. (man find)Get an idea of how it is used. </p>
+
+          <p> An example as given earlier: </p>
+
+          <code> ~$ find . -type f -iname *spekter* </code>
+
+          <ul>
+            <li> What you see is the command find. The next ‘.’ is telling us where we want to find. It’s the path. The dot means, search in this location where I am at. We could also type in /Documents or a full path from the root. Where ever you need to search. </li>
+            <li> The parameter -type is telling find that you specifically want to find a type of object, in this case, f stands for a regular file. </li>
+            <li> -iname is telling the name of the file we are looking for. You can also use -name but -iname is case insensitive. This means that my search will pull up, SpeKter as well. </li>
+            <li> Lastly, the *’s on either side again tell find that I want everything with spekter in it, regardless of what is around it. If I did not add that, my find will pull up nothing. </li>
+          </ul>
+
+          <p> TASK: Hidden throughout your home directory are image files with the name, edurange. Take your skills and find all 6. Create a new file in your home directory and put the location and type of each in that file. Remember there are many types of file images. Png, jpg, jpeg, and gif to name the widely used ones. </p>
+
+          <h3 id="get_stt_mor_comm"> More Commands </h3>
+
+          <h4> mv </h4>
+
+          <p> mv is used to move a file from one location to another, or to rename a file. Type man mv to learn more. </p>
+
+          <h4> cp </h4>
+
+          <p> cp is used to copy a file to a new location. Type man cp to learn more. </p>
+
+          <h4> less </h4>
+
+          <p> less is more. The command less is used to open larger files, page by page. It allows you more tools to read a file in an organized fashion. </p>
+
+          <h4> cowsay </h4>
+
+          <p> cowsay is probably one of the best commands. . . ever. Well maybe not ever but it is fun! </p>
+          <code> ~$ cowsay "this is fun" </code>
+
+          <h4> fortune </h4>
+
+          <p> fortune gives you, well, a fortune! Go ahead give it a whirl! </p>
+          <code> ~$ fortune </code>
+
+          <h4> Piping </h4>
+
+          <p> Piping is a new concept but stick with me on this one. When you give input to a command it is considered a standard in (STDIN). In other words it is data that is fed to a program/command. Whereas when you see something printed out back to you it is using standard out (STDOUT). A pipe, also recognized as | is used when you want something that is a STDOUT to then be used as the STDIN. To understand this we will use a fun example. </p>
+
+          <p> Remember fortune? If we just type fortune we get a fortune back. That fortune we get back is a STDOUT. But when we usecowsaywe type something for the cow to say, which is STDIN. So we can use a pipe to take our fortune and have the cow say it! </p>
+          <code> ~$ fortune | cowsay </code>
+
+          <h4> More vim </h4>
+
+          <p> There are a few more really useful commands I would like to teach you about vim. </p>
+          <p> If you want to open up multiple files at the same time you can do: </p>
+          <code> ~$ vim fileone filetwo.c filethree.h filefour.cc </code>
+          <p> Or you can open up another file or create a new file while you are still in vim with: </p>
+          <code> :e anotherfile.js </code>
+          <p> :b - And you can jump from file to file with the :b keystrokes and using tab to go through which file you would like to edit next </p>
+
+          <h3 id="get_stt_fin_mis"> Final Mission </h3>
+
+          <p> Here at CyberSec you have been well trained recruit, now let’s put your training to test! This is a real mission of the utmost importance. Complete this and you are assured a spot on our team. </p>
+
+          <p> TASK: Our intelligence has told us that somewhere in your computer is an image that is vital to our company. This image has a weird name but we know for certain that it contains the word ‘cowFJS’ in it. Through our sources we also know that there is ANOTHER file in that folder. COPY both the image and second file to your home directory in a new folder, called final-mission. Then create a new file in the folder, final-mission, called ‘cowsay.file’ with the contents of the cowsay man file in it. </p>
+
+      </section>
+      <section id="tre_hu">
+
+        <h2> Treasure Hunt </h2>
+
+          <h3 id="tre_hu_desc"> Description </h3>
+
+          <p> Treasure Hunt is an exercise that teaches about permissions and other security loopholes in Linux. In this virtual machine there are 16 imaginary users. Somewhere in his/her home directory, each of these imaginary users has a “secret” file named username-secret.<ext> (where <ext> is a file extension) whose contents are intended to be private (readable only by the user and no one else). However, each of their secret files can actually be read by other users who are both determined and clever. Your goal is to collect the contents of as many of the sixteen secret files as you can. </p>
+
+          <h3 id="tre_hu_back"> Background </h3>
+
+          <p> There are often multiple users on the same system or network. Given this case, how does a system determine who is able to access specific files? Linux system of file access permissions are used to control who is able to read, write and execute certain files. This is used both to keep user files private as well as to protect critical system files. In order to obtain many of the secrets in this exercise, you will need to understand the read, write, and execute permissions as well as how permissions are applied to the owner, group owner, and every user. If you are unfamiliar with linux permissions, see the section on Linux File Permissions in the Student Tutorials section below. </p>
+
+          <p> This exercise also utilizes password cracking for a few users. That password cracking method that you will work with utilizes linux password hashes. This exercise is not intended to teach about hashes and password security techniques. If you are unfamiliar with the general idea of them, a quick web search should catch you up with the basics. The files that contain the password hashes are not publicly available on linux systems, but we have made them so for this exercise and will show where to find them. Hopefully, this will give you an idea if the passwords you use are secure or not! </p>
+
+          <p> You will also run into the .htaccess file in this exercise. This is a configuration file for Apache Web Server. It is used for many things but here it is only used from user authorization. You should be able to figure it out when you come across it. If not, a simple web search will help you out again. </p>
+
+          <h3 id="tre_hu_learn_obj"> Learning Objectives </h3>
+
+          <ul>
+            <li> Know the difference between read, write, and execute permissions and how this affects directories and files </li>
+            <li> Understand linux groups </li>
+            <li> Understand what Set User ID and Set Group ID do </li>
+            <li> Know how to find a file’s permissions and interpret this and similar lines -rw**s**r-xr-x </li>
+            <li> Be able to create a symbolic link and know what it does </li>
+            <li> Recognize what sorts of passwords are easily cracked from known password hashes </li>
+            <li> Have a moderate understanding of some basic linux tools and how to use them </li>
+          </ul>
+
+          <h3 id="tre_hu_inst"> Instructions </h3>
+
+          <p> Connect to the VM via your instructor’s directions, or as displayed on your EDURange account. </p>
+
+          <p> Once logged in, it is your goal to find the secrets of the following 16 fake users: </p>
+
+          <ul>
+            <li> Alice Wan (awan) </li>
+            <li> Bob Duomo (bduomo) </li>
+            <li> Cathy Dry (cdry) </li>
+            <li> Debbie Shi (dshi) </li>
+            <li> Ellen Quintus (equintus) </li>
+            <li> Fred Sexon (fsexon) </li>
+            <li> George Hepta (ghepta) </li>
+            <li> Helen Ochoa (hochoa) </li>
+            <li> Inna Nunez (inunez) </li>
+            <li> Jack Dekka (jdekka) </li>
+            <li> Karen Elva (kelva) </li>
+            <li> Loretta Douzette (ldouzette) </li>
+            <li> Patricia Kaideka (pkaideka) </li>
+            <li> Pyotr Theodore Radessime (pradessime) </li>
+            <li> Quinn Sanera (qsanera) </li>
+            <li> Tudor Daforth (tdaforth) </li>
+          </ul>
+
+          <p> Each secret is contained somewhere in that user’s home directory. All fake users belong to a group named student, a fact that is important for some of the attacks. There are other significant groups as well that some of these users are in. </p>
+
+          <p> There is no strict sequential order for finding the secrets, though some you will only be able to get after gaining access to another user’s account. Password cracking is a great place to start. We will walk you through that below. </p>
+
+          <p> Accessing some secret files will require that you make changes to certain files/directories in the accounts of the fake users.  Once you determine the secret, be sure to undo any changes that you make so that you leave the system exactly in the same state that you found it. Otherwise, you could (1) make it very easy for others to access the information you worked so hard to get or (2) make it impossible for others to access the information you found (this is unacceptable in this exercise, though not in the real world). </p>
+
+          <p> Since some of your changes may be hard for you to undo, you can use the resetFakeUsers command to resets all fake user accounts to their initial states and also resets other parts of the system (e.g. deletes all files in the /tmp directory). Executing this command should solve all reseting issues; if it does not, please let us know. By calling resetFakeUsers frequently, you could cause a denial of service attack against your classmates; please do not do this! </p>
+
+          <p> (Note: One case has been found where resetFakeUsers does not work. This is after finding a particular secret, so you should be able to figure out what is necessary to make it work again.) </p>
+
+          <p> Password Cracking: </p>
+          <p> For password cracking download John the Ripper from http://www.openwall.com/john/ onto a local computer. John the Ripper is not on the Treasure Hunt VM, and you won’t be able to install it there. If you only have access to a Windows computer for your local machine, John the Ripper suggests HashSuite; though we won’t provide you with instructions on how to use that program. </p>
+
+          <p> On the Treasure Hunt machine, gain access to the file/etc/shadow. (See hints below if stuck). You will need a copy of /etc/shadow and /etc/passwd on your machine running John the Ripper. </p>
+
+          <p> Use John’s unshadow command to combine /etc/passwd and /etc/shadow into a single password file (e.g. unshadow passwd shadow > mypasswd). </p>
+
+          <p> Manually edit mypasswd to exclude all accounts other than the 16 fake users for this problem – otherwise you’re wasting processing time in your password cracker. When you find the secret of a fake user, removing that user from the unshadowed file will help speed up future attempts. You do not want to waste processing time trying to crack passwords you don’t need! </p>
+
+          <p> Run John onmypasswd(e.g. ‘john passwords’). The basic john command uses the default wordlist run/password.lst, which should be able to fairly quickly crack two user passwords. There is one more password that can be cracked, but you will need to feed john a custom word list. Maybe if you knew more about fake users. . . </p>
+
+          <p> User Web Pages: </p>
+          <p> Each user has at least one web page in a public html directory. Some of these pages contain information relevant to finding their secret. Although many of the user web pages are publicly readable by any user on the THVM, some can only be read via a web browser. Since you are logged in via ssh, you might be wondering how you can view these web pages. Lynx is a text-based web browser that we have provided for your use. Typing ‘lynx localhost/~awan/’ will let you view awan’s homepage. The same format can be used to view the other 15 user’s pages. Though you can see the public html pages in each user’s directory, due to the permissions of any private files, you will need to use Lynx to uncover some of the secrets. See Lynx’s man page for specific instructions. (w3m might also be installed, but the default version might not help you with every secret). </p>
+
+          <p> Hints: </p>
+          <ul>
+            <li> It may be helpful to export certain files from the THVM to your local computer (or vice versa). You can use scp or ftp from your local computer to do this. </li>
+            <li> Having trouble gaining access to /etc/shadow? Look in /bin/ and see if you can find something to help you. </li>
+            <li> Access to web directories can be controlled by a .htaccess file.  See http://www.javascriptkit.com/howto/htaccess.shtml for documentation on .htaccess files. </li>
+            <li> The web server runs as user/group www-data. Including www-data in a group gives the web server whatever permissions are given to the group. There is a group named apache whose only member is www-data. </li>
+            <li> In an HTML file, text between < ! - - and - - > (without spaces) is a comment that is not displayed by the web browser. </li>
+            <li> The ghostview suite is installed. The gv command can be used to display .pdf files. (Be patient; it is very slow when displaying a window remotely. Alternatively, you may want to export relevant .pdf files from the THVM to your local computer and view them there.) </li>
+            <li> It is possible to convert .pdf files to other file formats, and there are programs in the THVM for doing this. But saying exactly what those programs are would make one secret too easy too find. So you might want to research how to convert .pdf files to other formats in Linux. </li>
+            <li> .docx format is a zipped (compressed) directory of XML files; it can be uncompressed with the unzip command. There are many ways to obtain that secret though. </li>
+            <li> If you want to add a directory dir to the front of your PATH variable, a good way to do this is with the following command - export PATH=dir :$PATH (e.g. export PATH=/tmp/:\$PATH) </li>
+            <li> The strings command could be helpful for some secrets. As well as a hex viewer. </li>
+
+      </section>
+      <section id="elf_inf">
+
+        <h2> Elf Infection </h2>
+
+          <h3 id="elf_inf_desc"> Description </h3>
+
+          <p> ELF Infection is an exercise to assess your understanding of the structure of an executable file. The goal is to teach you, having identified that a program is doing something malicious, where that code has been injected and how it works. This is a reverse engineering problem and can use a range of tools, including readelf, objdump, gdb, strace and netstat. </p>
+
+          <h3 id="elf_inc_back"> Background </h3>
+
+          <p> One of the first things most people think of when it comes to digital security are viruses! Being able to detect and disable malware is a never ending job as the digital world continues to expand. The first step towards recognizing viruses is being able to understand what is normal behavior for a program. If you are unfamiliar with strace, and reading system calls, you might want to do our strace exercise before attempting ELF Infection. </p>
+
+          <p> As the title suggests, you will be examining the different ways ELF files can be infected. The files in this exercise were infected with a method called injection. ‘Injection’ is the process of inserting and smuggling a malicious payload into an ELF executable without breaking the executable’s integrity. </p>
+
+          <h3 id="elf_inf_learn_obj"> Learning Objectives </h3>
+
+          <ul>
+            <li> Know the capabilities of readelf and how to use the basic options </li>
+            <li> Know the format of an ELF file header </li>
+            <li> Know which system calls do the following
+              <ul>
+                <li> Make a new name for a file </li>
+                <li> Execute a process </li>
+                <li> Terminate the calling process </li>
+                <li> Create message buffer and read from the message queue </li>
+                <li> Assign the local IP address and port for a socket </li>
+              </ul> </li>
+            <li> Be familiar with the general classes of system calls </li>
+            <li> Be able to read a system trace and know what is normal vs abnormal </li>
+            <li> Be able to make a system call in C </li>
+            <li> Be able to make a system call in x86 assembly </li>
+            <li> Understand how the kernel handles system calls </li>
+            <li> Understand how some system calls introduce threats </li>
+            <li> Understand how errors are handled </li>
+          </ul>
+
+          <h3 id="elf_inc_inst"> Instructions </h3>
+
+          <p> Connect to the VM via your instructor’s directions, or as displayed on your EDURange account. </p>
+
+          <h3 id="elf_inf_desc"> Description </h3>
+
+          <p> Scapy Hunt poses the challenge of analyzing network traffic to understand who is communicating with whom and how. The player is trying to get data from an ftp server which is not on the same subnet, but one of the hosts on its network is communicating with it. By default the player can only see packets sent to the server and must craft packets to get them routed to the target and get a response back. </p>
+
+      </section>
+      <footer>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+  </body>
+</html>
